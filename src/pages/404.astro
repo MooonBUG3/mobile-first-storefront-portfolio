@@ -1,0 +1,14 @@
+---
+import Site from "../layouts/Site.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<Site title="Page not found — Storefront Clinic (portfolio edition)">
+  <section class="wrap prose section">
+    <p class="eyebrow" data-i18n="notfound.eyebrow">404 / PAGE NOT FOUND</p>
+    <h1><span data-i18n="notfound.t1">Let's get you back</span><br /><span data-i18n="notfound.t2">to the right page.</span></h1>
+    <p data-i18n="notfound.p">This page may have moved as our website changed.</p>
+    <a class="button" href={base} data-i18n="notfound.cta">Back to the homepage →</a>
+  </section>
+</Site>

@@ -1,0 +1,25 @@
+---
+import { t } from "../i18n";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<footer class="footer">
+  <div class="footer-brand">
+    <img src={`${base}brand/mark.svg`} width="44" height="44" alt="" />
+    <div>
+      <a class="brand" href={base} data-i18n="brand.name">Storefront Clinic</a>
+      <p data-i18n="footer.tagline">Clarity for your storefront.</p>
+    </div>
+  </div>
+  <nav class="footer-links" aria-label="Footer navigation">
+    <a href={`${base}contact/`} data-i18n="footer.contact">Contact</a>
+    <a href={`${base}privacy/`} data-i18n="footer.privacy">Privacy</a>
+    <a href={`${base}terms/`} data-i18n="footer.terms">Service terms</a>
+  </nav>
+  <div class="footer-note">
+    <a href="https://github.com/MOOONBUG/mobile-first-storefront-portfolio" target="_blank" rel="noopener noreferrer" data-i18n="footer.portfolio">Portfolio edition ↗</a>
+    <a href="https://mooon3.wooou-bill.workers.dev/" target="_blank" rel="noopener noreferrer" data-i18n="footer.production">Production site ↗</a>
+    <small>© {new Date().getFullYear()} Storefront Clinic · <span data-i18n="footer.copy">Portfolio edition of a production storefront site. No client data.</span></small>
+  </div>
+</footer>

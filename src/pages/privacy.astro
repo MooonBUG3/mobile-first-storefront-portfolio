@@ -1,0 +1,20 @@
+---
+import Site from "../layouts/Site.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<Site title="Privacy — Storefront Clinic (portfolio edition)">
+  <section class="wrap prose section">
+    <p class="eyebrow" data-i18n="privacy.eyebrow">UPDATED 12 OCTOBER 2026</p>
+    <h1 data-i18n="privacy.title">Privacy, plainly.</h1>
+    <p data-i18n="privacy.intro">This portfolio edition introduces a storefront-review service as a public interview case. It has no enquiry backend, account system, payment collection or visitor file upload.</p>
+    <h2 data-i18n="privacy.h1">Hosting</h2>
+    <p data-i18n="privacy.p1">GitHub Pages serves this static site; the platform processes technical request data (such as IP addresses and requested URLs) to deliver and protect it. This site adds no advertising trackers and sets no analytics cookies.</p>
+    <h2 data-i18n="privacy.h2">When you contact us</h2>
+    <p data-i18n="privacy.p2">On the production original, email or WhatsApp communications are handled through those providers. Information you provide is used to respond, scope work and manage an agreed engagement. Please avoid sharing customer exports, credentials or payment data.</p>
+    <h2 data-i18n="privacy.h3">Your choices</h2>
+    <p data-i18n="privacy.p3">You can request correction or deletion of enquiry information through the channel you used. This page will be updated before adding forms, analytics or other data collection.</p>
+    <a href={`${base}contact/`} data-i18n="privacy.link">Contact options →</a>
+  </section>
+</Site>

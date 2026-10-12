@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mooonbug.github.io/mobile-first-storefront-portfolio/sitemap-index.xml

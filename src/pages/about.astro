@@ -1,0 +1,21 @@
+---
+import Site from "../layouts/Site.astro";
+import { t } from "../i18n";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<Site title="About — Storefront Clinic (portfolio edition)">
+  <section class="wrap prose section">
+    <p class="eyebrow" data-i18n="about.eyebrow">ABOUT THE SERVICE</p>
+    <h1><span data-i18n="about.t1">Independent support.</span><br /><span data-i18n="about.t2">Focused on your storefront.</span></h1>
+    <p class="lede" data-i18n="about.lede">Storefront Clinic is an independent service helping online store operators examine product-page clarity and the next purchase step.</p>
+    <h2 data-i18n="about.h1">Start with something specific.</h2>
+    <p data-i18n="about.p1">We begin with one page and an agreed goal. Shopify is the initial focus; product categories can vary. The service is in its introductory stage, and our published sample is demonstration work rather than a client case study.</p>
+    <h2 data-i18n="about.h2">Evidence before promises.</h2>
+    <p data-i18n="about.p2">Confirmed issues, improvement ideas and unknowns are separated. An attractive mockup is not proof of a conversion lift. Work is accepted against agreed deliverables.</p>
+    <h2 data-i18n="about.h3">Built around clear boundaries.</h2>
+    <p data-i18n="about.p3">Reviews and implementation are separate scopes. Live changes require agreed access, a preview, approval and a recovery plan.</p>
+    <a class="button" href={`${base}sample/`} data-i18n="about.cta">See the sample report →</a>
+  </section>
+</Site>

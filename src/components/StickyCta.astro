@@ -1,0 +1,14 @@
+---
+// Mobile conversion pattern: a persistent CTA bar pinned to the bottom of the
+// viewport below 48em (hidden on tablet/desktop). Keeps the primary action
+// reachable one thumb-tap away on long pages. Respects the home-indicator
+// safe area on notched devices.
+import { t } from "../i18n";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<aside class="sticky-cta" aria-label="Contact call to action">
+  <span class="sticky-cta-note" data-i18n="cta.stickyNote">USD 60 · single-page review</span>
+  <a class="button sticky-cta-button" href={`${base}contact/`} data-i18n="cta.sticky">Let's talk ↗</a>
+</aside>

@@ -1,0 +1,19 @@
+{
+  "name": "mobile-first-storefront-portfolio",
+  "version": "1.0.0",
+  "description": "Interview portfolio: a mobile-first rebuild of a production storefront-review site (desensitized edition), built on the open-source Astro framework.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.2.1",
+    "astro": "5.1.3"
+  },
+  "devDependencies": {
+    "typescript": "5.7.2"
+  }
+}

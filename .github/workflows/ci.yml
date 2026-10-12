@@ -1,0 +1,54 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: build & typecheck
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Astro build
+        run: npm run build
+      - name: Typecheck
+        run: npm run types
+      # Every data-i18n key rendered into HTML must exist in the dictionary,
+      # otherwise Chinese visitors would silently keep English copy.
+      - name: Verify i18n dictionary keys
+        run: |
+          node -e '
+          const fs = require("fs"), path = require("path");
+          const dictKeys = new Set();
+          for (const f of fs.readdirSync("src/i18n")) {
+            if (!f.endsWith(".ts") || f === "index.ts") continue;
+            const c = fs.readFileSync(path.join("src/i18n", f), "utf8");
+            for (const m of c.matchAll(/"([a-z0-9]+\.[A-Za-z0-9]+)":/g)) dictKeys.add(m[1]);
+          }
+          const htmlKeys = new Set();
+          const walk = (d) => {
+            for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+              const p = path.join(d, e.name);
+              if (e.isDirectory()) walk(p);
+              else if (e.name.endsWith(".html")) {
+                const c = fs.readFileSync(p, "utf8");
+                for (const m of c.matchAll(/data-i18n(?:-html|-aria)?="([^"]+)"/g)) htmlKeys.add(m[1]);
+              }
+            }
+          };
+          walk("dist");
+          let bad = 0;
+          for (const k of htmlKeys) {
+            if (!dictKeys.has(k)) { console.error("missing dictionary key:", k); bad++; }
+          }
+          if (bad) process.exit(1);
+          console.log("i18n keys checked:", htmlKeys.size);
+          '

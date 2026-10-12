@@ -1,0 +1,33 @@
+---
+import Site from "../layouts/Site.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<Site title="Contact — Storefront Clinic (portfolio edition)">
+  <section class="wrap prose section">
+    <p class="eyebrow" data-i18n="contact.eyebrow">LET'S DEFINE THE FIRST STEP</p>
+    <h1 data-i18n="contact.title">Start with your page.</h1>
+    <p class="lede" data-i18n="contact.lede">A URL and a clear goal are enough to begin a conversation.</p>
+
+    <aside class="notice">
+      <b data-i18n="contact.noticeT">This is a desensitized portfolio edition.</b>
+      <p data-i18n="contact.noticeP">Contact channels are removed here. The production original runs at mooon3.wooou-bill.workers.dev. The brief below stays on your device and is not submitted to us.</p>
+    </aside>
+
+    <h2 data-i18n="contact.brief">Your review brief</h2>
+    <p data-i18n="contact.briefP">Copy these questions into your message, or download them for later.</p>
+    <ol class="brief-list">
+      <li data-i18n="contact.q1">What is your product-page URL?</li>
+      <li data-i18n="contact.q2">Which market and language do you serve?</li>
+      <li data-i18n="contact.q3">What should visitors understand or do next?</li>
+      <li data-i18n="contact.q4">What specific difficulty have you noticed?</li>
+      <li data-i18n="contact.q5">Do you have a preferred time frame?</li>
+    </ol>
+    <a class="text-link" href={`${base}review-brief.txt`} download data-i18n="contact.download">Download the brief (.txt) ↓</a>
+    <p class="micro" data-i18n="contact.micro">Do not include passwords, payment details or customer data. Downloading the brief does not send an enquiry or create an order.</p>
+
+    <h2 data-i18n="contact.next">What happens next?</h2>
+    <p data-i18n="contact.nextP">We confirm fit and scope, then agree a written quote and payment terms before starting. No payment is collected on this website.</p>
+  </section>
+</Site>

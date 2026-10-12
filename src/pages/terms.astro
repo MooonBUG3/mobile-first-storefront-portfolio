@@ -1,0 +1,22 @@
+---
+import Site from "../layouts/Site.astro";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<Site title="Service terms — Storefront Clinic (portfolio edition)">
+  <section class="wrap prose section">
+    <h1><span data-i18n="terms.t1">Clear scope.</span><br /><span data-i18n="terms.t2">Clear expectations.</span></h1>
+    <h2 data-i18n="terms.h1">Before work starts</h2>
+    <p data-i18n="terms.p1">The displayed USD 60 introductory review fee is a proposal. A written quote confirms the page, checks, fee, payment method, start date, delivery and cancellation or refund terms. Browsing this site or downloading a brief does not create a paid order.</p>
+    <h2 data-i18n="terms.h2">The review</h2>
+    <p data-i18n="terms.p2">Delivery is within two business days after agreement and receipt of complete inputs. The scope covers one product page, one next purchase step, evidence and prioritized recommendations, one improvement concept and one factual or scope-related report revision. Access limitations may require a revised scope or date agreed in advance.</p>
+    <h2 data-i18n="terms.h3">Implementation</h2>
+    <p data-i18n="terms.p3">Implementation, third-party costs and ongoing maintenance are separate. Full redesigns, payment-system changes, production database operations and live purchase tests are excluded from the introductory review.</p>
+    <h2 data-i18n="terms.h4">Acceptance and limitations</h2>
+    <p data-i18n="terms.p4">Acceptance concerns agreed deliverables, not revenue or conversion outcomes. Backups and rollback depend on the store platform, permissions and applications; zero data loss is not guaranteed. Production publishing requires your approval.</p>
+    <h2 data-i18n="terms.h5">Permissions</h2>
+    <p data-i18n="terms.p5">You must have authority to commission the work and supply materials or access. Client work is not published as a case study without permission.</p>
+    <a href={`${base}contact/`} data-i18n="terms.link">Discuss the scope →</a>
+  </section>
+</Site>

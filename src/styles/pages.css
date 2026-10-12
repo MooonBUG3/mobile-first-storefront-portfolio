@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Inner pages: prose typography, sample report cards, contact brief list.
+   ========================================================================== */
+
+.prose {
+  max-width: 74ch;
+}
+
+.prose h1 {
+  margin-bottom: 18px;
+}
+
+.prose h2 {
+  font-size: clamp(1.4rem, 5vw, 1.8rem);
+  margin: 34px 0 12px;
+}
+
+.prose p {
+  font-size: 16px;
+}
+
+.prose .lede {
+  font-size: 18px;
+  color: var(--ink);
+}
+
+.prose a:not(.button) {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.prose .button {
+  margin-top: 12px;
+}
+
+.brief-list {
+  padding-left: 22px;
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+}
+
+.brief-list li {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+}
+
+/* --- sample report -------------------------------------------------------- */
+
+.sample-grid {
+  display: grid;
+  gap: 16px;
+  margin: 26px 0;
+}
+
+.sample {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--card);
+  padding: 18px;
+  display: grid;
+  gap: 8px;
+  align-content: start;
+}
+
+.sample span {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.sample h3 {
+  font-size: 19px;
+  margin: 0;
+}
+
+.sample strong {
+  font-size: 24px;
+  color: var(--ink);
+}
+
+.sample p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.sample.after {
+  border-color: var(--accent);
+  background: #f2f8f0;
+}
+
+.mock-button {
+  margin-top: 6px;
+  text-align: center;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.sample.before .mock-button {
+  background: #e6e9e2;
+  color: var(--muted);
+}
+
+.sample.after .mock-button {
+  background: var(--ink);
+  color: #fff;
+}
+
+@media (min-width: 40em) {
+  .sample-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 22px;
+  }
+
+  .brief-list {
+    max-width: 60ch;
+  }
+}

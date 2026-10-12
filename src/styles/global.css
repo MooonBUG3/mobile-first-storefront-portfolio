@@ -1,0 +1,5 @@
+/* Global stylesheet entry — Astro bundles these imports into one file.
+   Order matters: base tokens/layout first, then sections, then inner pages. */
+@import "./base.css";
+@import "./home.css";
+@import "./pages.css";

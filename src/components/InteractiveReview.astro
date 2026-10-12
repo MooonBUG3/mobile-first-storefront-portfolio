@@ -1,0 +1,129 @@
+---
+// Interactive before/after product-page demo — the centerpiece of the case:
+// one product, three findings, view toggle, and a live finding note.
+// Mobile adaptations vs the desktop original:
+// - single-column stage below 30em, side-by-side from 30em
+// - toggle buttons stretch full width with 44px+ touch targets
+// - finding note keeps a reserved min-height so switching findings never
+//   shifts the layout (CLS guard)
+// - copy is dictionary-driven, so the language switch re-renders it
+import { dictionaries, type Lang } from "../i18n";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<aside class="review-preview interactive-review" aria-label="Interactive fictional product-page review" data-i18n-aria="lab.demo">
+  <div class="preview-heading">
+    <img src={`${base}brand/mark.svg`} width="44" height="44" alt="" />
+    <span data-i18n="lab.title">The clarity lab</span>
+    <span class="lab-label" data-i18n="lab.try">Try it yourself</span>
+  </div>
+
+  <div class="demo-controls" hidden>
+    <div class="view-toggle" role="group" aria-label="Compare sample copy">
+      <button type="button" data-view="before" aria-pressed="true" data-i18n="lab.viewBefore">Before</button>
+      <button type="button" data-view="after" aria-pressed="false" data-i18n="lab.viewAfter">After review ↗</button>
+    </div>
+  </div>
+
+  <div class="demo-stage" data-mode="before">
+    <div class="product-visual" aria-hidden="true">
+      <span class="product-word">everyday.</span>
+      <div class="cup-object"><span>every<br />day.</span></div>
+      <span class="product-caption" data-i18n="demo.cup">A fictional cup collection</span>
+    </div>
+    <div class="demo-product">
+      <span class="preview-label" data-i18n="demo.collection">THE EVERYDAY COLLECTION</span>
+      <h2 id="demo-title" data-i18n="demo.titleBefore">Everyday cups</h2>
+      <p class="demo-price" id="demo-price" data-i18n="demo.priceBefore">$18</p>
+      <p id="demo-detail" data-i18n="demo.detailBefore">Choose: Small / Large</p>
+      <div class="demo-cart" id="demo-cart" data-i18n="demo.cartBefore">Buy now</div>
+      <small data-i18n="demo.nocheckout">Illustration only. No checkout.</small>
+    </div>
+  </div>
+
+  <div class="hotspots" hidden role="group" aria-label="Explore review findings" data-i18n-aria="lab.hotspots">
+    <button type="button" data-finding="0" aria-pressed="true" data-i18n="demo.h1">01 Quantity</button>
+    <button type="button" data-finding="1" aria-pressed="false" data-i18n="demo.h2">02 Options</button>
+    <button type="button" data-finding="2" aria-pressed="false" data-i18n="demo.h3">03 Next action</button>
+  </div>
+
+  <div class="finding-note" aria-live="polite" aria-atomic="true">
+    <span id="finding-label" data-i18n="demo.labelBefore">What's missing?</span>
+    <p id="finding-text" data-i18n="demo.n1b">Is $18 for one cup or a pack? The quantity is missing beside the price.</p>
+  </div>
+
+  <p class="preview-caption" data-i18n="demo.selfmade">Self-created demonstration. Not a client result.</p>
+  <noscript>
+    <p class="preview-caption"><a href={`${base}sample/`} data-i18n="sample.title">Read the full before-and-after sample →</a></p>
+  </noscript>
+</aside>
+
+<script>
+  import { dictionaries, type Lang } from "../i18n";
+
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const demo = document.querySelector<HTMLElement>(".interactive-review");
+  if (demo) {
+    demo.querySelectorAll<HTMLElement>("[hidden]").forEach((el) => (el.hidden = false));
+  }
+
+  let lang: Lang = (document.documentElement.dataset.lang as Lang) || "en";
+  let after = false;
+  let finding = 0;
+
+  // Notes are key pairs so the language switch re-renders without duplication.
+  const NOTES: [string, string][] = [
+    ["demo.n1b", "demo.n1a"],
+    ["demo.n2b", "demo.n2a"],
+    ["demo.n3b", "demo.n3a"],
+  ];
+  type Key = keyof (typeof dictionaries)["en"];
+
+  const setText = (id: string, value: string) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
+
+  const render = () => {
+    const d = dictionaries[lang] as Record<Key, string>;
+    setText("demo-title", after ? d["demo.titleAfter"] : d["demo.titleBefore"]);
+    setText("demo-price", after ? d["demo.priceAfter"] : d["demo.priceBefore"]);
+    setText("demo-detail", after ? d["demo.detailAfter"] : d["demo.detailBefore"]);
+    setText("demo-cart", after ? d["demo.cartAfter"] : d["demo.cartBefore"]);
+    setText("finding-label", after ? d["demo.labelAfter"] : d["demo.labelBefore"]);
+    setText("finding-text", d[NOTES[finding][after ? 1 : 0]]);
+    const stage = demo?.querySelector<HTMLElement>(".demo-stage");
+    if (stage) stage.dataset.mode = after ? "after" : "before";
+    demo?.querySelectorAll<HTMLButtonElement>("[data-view]").forEach((b) => {
+      b.setAttribute("aria-pressed", String((b.dataset.view === "after") === after));
+    });
+    demo?.querySelectorAll<HTMLButtonElement>("[data-finding]").forEach((b) => {
+      b.setAttribute("aria-pressed", String(Number(b.dataset.finding) === finding));
+    });
+    if (!reduced.matches && demo) {
+      demo.querySelector(".demo-product")?.animate(
+        [{ opacity: 0.45, transform: "translateY(8px)" }, { opacity: 1, transform: "translateY(0)" }],
+        { duration: 320, easing: "ease-out" },
+      );
+    }
+  };
+
+  document.addEventListener("langchange", (event) => {
+    lang = (event as CustomEvent<{ lang: Lang }>).detail.lang;
+    render();
+  });
+
+  document.querySelectorAll<HTMLButtonElement>("[data-view]").forEach((b) =>
+    b.addEventListener("click", () => {
+      after = b.dataset.view === "after";
+      render();
+    }),
+  );
+  document.querySelectorAll<HTMLButtonElement>("[data-finding]").forEach((b) =>
+    b.addEventListener("click", () => {
+      finding = Number(b.dataset.finding);
+      render();
+    }),
+  );
+</script>

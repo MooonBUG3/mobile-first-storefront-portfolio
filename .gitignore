@@ -1,0 +1,28 @@
+# build output
+dist/
+.output/
+.vercel/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+*.log
+
+# environment
+.env
+.env.production
+
+# astro
+.astro/
+
+# local verify artifacts (screenshots & preview server files stay out of the repo)
+preview/
+verify-mobile-*.png
+
+# editor / OS
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/extensions.json

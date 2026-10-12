@@ -1,0 +1,42 @@
+---
+import Site from "../layouts/Site.astro";
+import { t } from "../i18n";
+
+const base = import.meta.env.BASE_URL;
+---
+
+<Site title="Sample review — Storefront Clinic (portfolio edition)">
+  <section class="wrap section">
+    <p class="eyebrow" data-i18n="sample.eyebrow">SELF-CREATED DEMONSTRATION / NOT A CLIENT CASE</p>
+    <h1 data-i18n="sample.title">What a useful finding looks like.</h1>
+    <p class="lede" data-i18n="sample.lede">A fictional cup product page illustrates our report format. No live merchant was tested, no orders were placed and no business results are claimed.</p>
+
+    <div class="sample-grid">
+      <article class="sample before">
+        <span data-i18n="sample.beforeLabel">BEFORE / FICTIONAL PAGE</span>
+        <h3 data-i18n="demo.titleBefore">Everyday cups</h3>
+        <strong data-i18n="demo.priceBefore">$18</strong>
+        <p data-i18n="demo.detailBefore">Choose: Small / Large</p>
+        <div class="mock-button" data-i18n="sample.beforeCta">Buy now</div>
+      </article>
+      <article class="sample after">
+        <span data-i18n="sample.afterLabel">PROPOSED COPY / SAME FICTIONAL PRODUCT</span>
+        <h3 data-i18n="demo.titleAfter">Everyday cups · 12 oz</h3>
+        <strong data-i18n="demo.priceAfter">$18 / pack of 50</strong>
+        <p data-i18n-html="sample.afterDetail">Size: 12 oz · Quantity: 50 cups<br />Lids sold separately.</p>
+        <div class="mock-button" data-i18n="sample.afterCta">Add 1 pack to cart — $18</div>
+      </article>
+    </div>
+
+    <div class="prose">
+      <h2 data-i18n="sample.finding">Finding 01 · Clarify what the price buys</h2>
+      <p><b data-i18n="sample.observed">Observed in this demonstration:</b> <span data-i18n="sample.observedP">the original panel shows $18 and “Small / Large”, without a pack quantity or capacity. The proposed panel makes these fictional specifications explicit.</span></p>
+      <p><b data-i18n="sample.priority">Priority:</b> <span data-i18n="sample.priorityP">review before cosmetic changes. These details affect understanding of the offer. No measured sales impact is available.</span></p>
+      <p><b data-i18n="sample.rec">Recommendation:</b> <span data-i18n="sample.recP">validate actual quantity, size, inclusions and price with the merchant, then place them near the primary action.</span></p>
+      <p><b data-i18n="sample.accept">Acceptance check:</b> <span data-i18n="sample.acceptP">confirm the visible pack quantity and capacity match the selected variant and actual cart line item on desktop and mobile. That interactive check has not been performed in this static demonstration.</span></p>
+      <h2 data-i18n="sample.adds">What a commissioned report adds</h2>
+      <p data-i18n="sample.addsP">Your agreed URL, observation date, viewport, reproducible steps, screenshots, tested states and limitations. We report fewer than three priorities if the evidence does not support three.</p>
+      <a class="button" href={`${base}contact/`} data-i18n="sample.cta">Discuss your product page ↗</a>
+    </div>
+  </section>
+</Site>
