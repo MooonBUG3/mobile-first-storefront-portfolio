@@ -2,7 +2,7 @@
 
 > 本文件说明：本仓库与生产原站之间的删改边界、为什么这样删、面试官可以如何核验。
 > 原站（生产环境，真实客户）：<https://mooon3.wooou-bill.workers.dev/>
-> 本仓库（脱敏作品集）：<https://github.com/MOONBUG/mobile-first-storefront-portfolio>
+> 本仓库（脱敏作品集）：<https://github.com/MooonBUG3/mobile-first-storefront-portfolio>
 
 ## 1. 为什么需要脱敏
 

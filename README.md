@@ -2,7 +2,7 @@
 
 > 一个面向「跨境电商独立站技术运营」岗位的公开作品集：把一套**桌面优先**的生产级独立站服务官网，按**移动优先**原则完整重铸，并对客户信息脱敏。
 >
-> 在线演示（GitHub Pages）：https://mooonbug.github.io/mobile-first-storefront-portfolio/
+> 在线演示（GitHub Pages）：https://mooonbug3.github.io/mobile-first-storefront-portfolio/
 > 生产原站（Cloudflare Workers）：https://mooon3.wooou-bill.workers.dev/
 
 **脱敏声明**：本仓库是生产站点的作品集版本。站点中的所有文案、价格、演示均为自建的虚构示例，不含任何真实客户数据、联系方式或商业承诺。详见 [docs/desensitization.md](docs/desensitization.md)。

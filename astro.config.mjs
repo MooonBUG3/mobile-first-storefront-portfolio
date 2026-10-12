@@ -7,7 +7,7 @@ import sitemap from "@astrojs/sitemap";
 // original runs as a Cloudflare Worker at the domain root — see
 // docs/architecture.md for the deployment mapping.
 export default defineConfig({
-  site: "https://mooonbug.github.io/mobile-first-storefront-portfolio/",
+  site: "https://mooonbug3.github.io/mobile-first-storefront-portfolio/",
   // NOTE: keep the trailing slash — Astro does not add it for an explicit base.
   base: "/mobile-first-storefront-portfolio/",
   devToolbar: { enabled: false },

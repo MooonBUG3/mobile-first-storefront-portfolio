@@ -2,7 +2,7 @@
 
 An interview case for a cross-border e-commerce tech-operations role: a **desensitized, mobile-first rebuild** of a production storefront-review service site.
 
-- Live demo: https://mooonbug.github.io/mobile-first-storefront-portfolio/
+- Live demo: https://mooonbug3.github.io/mobile-first-storefront-portfolio/
 - Production original: https://mooon3.wooou-bill.workers.dev/ (Cloudflare Workers, desktop-first)
 - Full case write-up (Chinese): [README.md](README.md)
 
